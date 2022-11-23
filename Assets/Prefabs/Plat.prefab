@@ -10,8 +10,8 @@ GameObject:
   m_Component:
   - component: {fileID: 7569900676101446873}
   - component: {fileID: 7569900676101446872}
-  - component: {fileID: 7569900676101446870}
   - component: {fileID: 7569900676101446871}
+  - component: {fileID: -3778923454508403617}
   m_Layer: 0
   m_Name: Plat
   m_TagString: Untagged
@@ -75,7 +75,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: c3cb3d20d0fcd4f2c9a8a9d81dcb35d3, type: 3}
+  m_Sprite: {fileID: 21300000, guid: f784cecc0d7f74480b9038af2c3d131b, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -86,7 +86,20 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!61 &7569900676101446870
+--- !u!114 &7569900676101446871
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7569900676101446875}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 26bf7dd9927a940b288114583b6f31e3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  platDestroyerPoint: {fileID: 0}
+--- !u!61 &-3778923454508403617
 BoxCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -110,18 +123,5 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 10.8, y: 2.56}
-  m_EdgeRadius: 0
---- !u!114 &7569900676101446871
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7569900676101446875}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 26bf7dd9927a940b288114583b6f31e3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  platDestroyerPoint: {fileID: 0}
+  m_Size: {x: 9.6, y: 1.3}
+  m_EdgeRadius: 0.3
