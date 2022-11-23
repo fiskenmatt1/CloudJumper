@@ -7,6 +7,9 @@ public class PlayerControls : MonoBehaviour
     public Rigidbody2D rb;
     public TMP_Text scoreText;
     public Camera mainCamera;
+    public AudioSource audioSource;
+    public AudioClip audioClipJump;
+    public AudioClip audioClipFall;
 
     private byte currentJumpCount = 0;
     private byte maxJumpCount = 2;
@@ -14,6 +17,7 @@ public class PlayerControls : MonoBehaviour
     private float speedIncrease = 0.001F;
     private float startingPosX;
     private string bestScore;
+    private bool playerIsDead = false;
 
     // Start is called before the first frame update
     void Start()
@@ -29,6 +33,12 @@ public class PlayerControls : MonoBehaviour
     {
         if (rb.position.y < -7) 
         {
+            //TODO: add popup menu, uncomment below fall sound play
+            // if (!playerIsDead) 
+            // {
+            //     audioSource.PlayOneShot(audioClipFall);
+            //     playerIsDead = true;
+            // }
             setNewBestScoreIfAchieved();
             Application.LoadLevel(Application.loadedLevel); //TODO: obselete
         }
@@ -37,6 +47,7 @@ public class PlayerControls : MonoBehaviour
 
         if (Input.GetMouseButtonDown(0) && currentJumpCount < maxJumpCount) 
         {
+            audioSource.PlayOneShot(audioClipJump);
             rb.velocity = new Vector2(rb.velocity.x, 6);
             currentJumpCount += 1;
         }
@@ -51,9 +62,6 @@ public class PlayerControls : MonoBehaviour
             mainCamera.orthographicSize += 0.001F;
         }
     }
-
-    // void OnMouseDown() {
-    // }
 
     void OnCollisionEnter2D(Collision2D col)
     {
