@@ -6,6 +6,7 @@ public class PlayerControls : MonoBehaviour
 {
     public Rigidbody2D rb;
     public TMP_Text scoreText;
+    public Camera mainCamera;
 
     private byte currentJumpCount = 0;
     private byte maxJumpCount = 2;
@@ -42,6 +43,13 @@ public class PlayerControls : MonoBehaviour
 
         speedIncrease += 0.005F;
         updateScoreText(score());
+
+        // zoom out camera slowly over time (max 50) 
+        //NOTE: increase should probably be linked to score or player speed rather than frames
+        if (mainCamera.orthographicSize < 50F)
+        {
+            mainCamera.orthographicSize += 0.001F;
+        }
     }
 
     // void OnMouseDown() {

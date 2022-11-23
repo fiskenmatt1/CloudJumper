@@ -37,7 +37,6 @@ public class PlatGenerator : MonoBehaviour
             // distanceBetweenPlats += 0.01F;
         }
         // increase distance of next plat spawn (x)
-        // NOTE: gap increase rate should be same as player speed increase (TODO: read from global setting?)
-        distanceBetweenPlats += 0.005F;
+        distanceBetweenPlats += 0.001F;
     }
 }
