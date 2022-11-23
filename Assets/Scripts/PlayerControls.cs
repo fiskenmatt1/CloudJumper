@@ -40,7 +40,7 @@ public class PlayerControls : MonoBehaviour
             currentJumpCount += 1;
         }
 
-        speedIncrease += 0.003F;
+        speedIncrease += 0.005F;
         updateScoreText(score());
     }
 
