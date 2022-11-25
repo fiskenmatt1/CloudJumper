@@ -10,6 +10,7 @@ public class PlayerControls : MonoBehaviour
     public AudioSource audioSource;
     public AudioClip audioClipJump;
     public AudioClip audioClipFall;
+    public GameObject popupMenu;
 
     private byte currentJumpCount = 0;
     private byte maxJumpCount = 2;
@@ -22,6 +23,7 @@ public class PlayerControls : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        Time.timeScale = 1F;
         rb = GetComponent<Rigidbody2D>();
         startingPosX = transform.position.x;
         bestScore = PlayerPrefs.GetString("BestScore", "0");
@@ -31,16 +33,19 @@ public class PlayerControls : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (playerIsDead) { return; }
+
         if (rb.position.y < -7) 
         {
             //TODO: add popup menu, uncomment below fall sound play
-            // if (!playerIsDead) 
-            // {
-            //     audioSource.PlayOneShot(audioClipFall);
-            //     playerIsDead = true;
-            // }
+            if (!playerIsDead) 
+            {
+                audioSource.PlayOneShot(audioClipFall);
+                playerIsDead = true;
+            }
+            Time.timeScale = 0F;
             setNewBestScoreIfAchieved();
-            Application.LoadLevel(Application.loadedLevel); //TODO: obselete
+            popupMenu.SetActive(true);
         }
 
         rb.velocity = new Vector2(baseSpeed + speedIncrease, rb.velocity.y);
