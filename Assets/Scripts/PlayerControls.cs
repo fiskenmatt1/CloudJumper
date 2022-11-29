@@ -1,6 +1,8 @@
 using System;
 using UnityEngine;
 using TMPro;
+using UnityEngine.EventSystems;
+using System.Collections.Generic;
 
 public class PlayerControls : MonoBehaviour
 {
@@ -50,7 +52,7 @@ public class PlayerControls : MonoBehaviour
 
         rb.velocity = new Vector2(baseSpeed + speedIncrease, rb.velocity.y);
 
-        if (Input.GetMouseButtonDown(0) && currentJumpCount < maxJumpCount) 
+        if (Input.GetMouseButtonDown(0) && currentJumpCount < maxJumpCount && !mousePositionOnPauseButton()) 
         {
             audioSource.PlayOneShot(audioClipJump);
             rb.velocity = new Vector2(rb.velocity.x, 6);
@@ -95,6 +97,31 @@ public class PlayerControls : MonoBehaviour
         {
             PlayerPrefs.SetString("BestScore", score().ToString());
         }
+    }
+
+    // Determine if mouse is over the pause button
+    private bool mousePositionOnPauseButton()
+    {
+        PointerEventData pointer = new PointerEventData(EventSystem.current);
+        pointer.position = Input.mousePosition;
+
+        List<RaycastResult> raycastResults = new List<RaycastResult>();
+        EventSystem.current.RaycastAll(pointer, raycastResults);
+
+        bool onPauseButton = false;
+
+        if (raycastResults.Count > 0)
+        {
+            foreach (var result in raycastResults)
+            {
+                if (result.gameObject.tag == "PauseButton")
+                {
+                    onPauseButton = true;
+                }
+            }
+        }
+
+        return onPauseButton;
     }
 
 }
