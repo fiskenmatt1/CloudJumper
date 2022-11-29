@@ -10,7 +10,8 @@ public class PlayerControls : MonoBehaviour
     public AudioSource audioSource;
     public AudioClip audioClipJump;
     public AudioClip audioClipFall;
-    public GameObject popupMenu;
+
+    public static bool playerIsDead = false;
 
     private byte currentJumpCount = 0;
     private byte maxJumpCount = 2;
@@ -18,12 +19,12 @@ public class PlayerControls : MonoBehaviour
     private float speedIncrease = 0.001F;
     private float startingPosX;
     private string bestScore;
-    private bool playerIsDead = false;
 
     // Start is called before the first frame update
     void Start()
     {
         Time.timeScale = 1F;
+        playerIsDead = false;
         rb = GetComponent<Rigidbody2D>();
         startingPosX = transform.position.x;
         bestScore = PlayerPrefs.GetString("BestScore", "0");
@@ -33,19 +34,18 @@ public class PlayerControls : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (playerIsDead) { return; }
+        // Don't update when player dead or paused
+        if (playerIsDead || PopupMenu.isPaused) { return; }
 
         if (rb.position.y < -7) 
         {
-            //TODO: add popup menu, uncomment below fall sound play
             if (!playerIsDead) 
             {
                 audioSource.PlayOneShot(audioClipFall);
                 playerIsDead = true;
             }
-            Time.timeScale = 0F;
             setNewBestScoreIfAchieved();
-            popupMenu.SetActive(true);
+            PopupMenu.pause(playerIsDead);
         }
 
         rb.velocity = new Vector2(baseSpeed + speedIncrease, rb.velocity.y);
@@ -61,7 +61,7 @@ public class PlayerControls : MonoBehaviour
         updateScoreText(score());
 
         // zoom out camera slowly over time (max 50) 
-        //NOTE: increase should probably be linked to score or player speed rather than frames
+        // NOTE: increase should probably be linked to score or player speed rather than frames
         if (mainCamera.orthographicSize < 50F)
         {
             mainCamera.orthographicSize += 0.001F;
