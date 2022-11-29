@@ -96,6 +96,7 @@ public class PlayerControls : MonoBehaviour
         if (score() > Convert.ToUInt64(bestScore))
         {
             PlayerPrefs.SetString("BestScore", score().ToString());
+            PopupMenu.didAchieveNewBest = true;
         }
     }
 
