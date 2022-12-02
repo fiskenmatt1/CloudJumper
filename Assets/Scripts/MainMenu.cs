@@ -15,6 +15,6 @@ public class MainMenu : MonoBehaviour
 
     public static void Settings()
     {
-        //TODO
+        SettingsMenu.Display();
     }
 }

@@ -10,6 +10,8 @@ TagManager:
   - PopupMenuText
   - NewBestText
   - ClickAudioSource
+  - SettingsMenu
+  - AudioToggle
   layers:
   - Default
   - TransparentFX
