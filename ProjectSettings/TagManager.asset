@@ -9,6 +9,7 @@ TagManager:
   - CloseButton
   - PopupMenuText
   - NewBestText
+  - ClickAudioSource
   layers:
   - Default
   - TransparentFX
