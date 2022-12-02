@@ -82,7 +82,7 @@ public class PlayerControls : MonoBehaviour
 
     private void updateScoreText(ulong score)
     {
-        scoreText.text = "Score: " + score.ToString() + Environment.NewLine + "Best: " + bestScore;
+        scoreText.text = "SCORE: " + score.ToString() + Environment.NewLine + "BEST: " + bestScore;
     }
 
     private ulong score()
