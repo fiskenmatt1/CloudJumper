@@ -70,6 +70,7 @@ public class PlayerControls : MonoBehaviour
         }
     }
 
+    //TODO: restrict jump reset to collisions with top/sides of cloud 
     void OnCollisionEnter2D(Collision2D col)
     {
         ResetJumpCount();
