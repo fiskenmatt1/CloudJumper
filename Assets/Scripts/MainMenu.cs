@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -10,12 +8,12 @@ public class MainMenu : MonoBehaviour
         Time.timeScale = 1F;
     }
 
-    public static void play()
+    public static void Play()
     {
         SceneManager.LoadScene("GameScene", LoadSceneMode.Single);
     }
 
-    public static void settings()
+    public static void Settings()
     {
         //TODO
     }

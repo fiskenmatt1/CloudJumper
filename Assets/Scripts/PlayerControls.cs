@@ -30,7 +30,7 @@ public class PlayerControls : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         startingPosX = transform.position.x;
         bestScore = PlayerPrefs.GetString("BestScore", "0");
-        updateScoreText(score());
+        UpdateScoreText(Score());
     }
 
     // Update is called once per frame
@@ -47,7 +47,7 @@ public class PlayerControls : MonoBehaviour
                 playerIsDead = true;
             }
             setNewBestScoreIfAchieved();
-            PopupMenu.pause(playerIsDead);
+            PopupMenu.Pause(playerIsDead);
         }
 
         rb.velocity = new Vector2(baseSpeed + speedIncrease, rb.velocity.y);
@@ -60,7 +60,7 @@ public class PlayerControls : MonoBehaviour
         }
 
         speedIncrease += 0.005F;
-        updateScoreText(score());
+        UpdateScoreText(Score());
 
         // zoom out camera slowly over time (max 50) 
         // NOTE: increase should probably be linked to score or player speed rather than frames
@@ -72,20 +72,20 @@ public class PlayerControls : MonoBehaviour
 
     void OnCollisionEnter2D(Collision2D col)
     {
-        resetJumpCount();
+        ResetJumpCount();
     }
 
-    private void resetJumpCount()
+    private void ResetJumpCount()
     {
         currentJumpCount = 0;
     }
 
-    private void updateScoreText(ulong score)
+    private void UpdateScoreText(ulong score)
     {
         scoreText.text = "SCORE: " + score.ToString() + Environment.NewLine + "BEST: " + bestScore;
     }
 
-    private ulong score()
+    private ulong Score()
     {
         ulong distanceMoved = (ulong)(transform.position.x - startingPosX);
         return distanceMoved;
@@ -93,9 +93,9 @@ public class PlayerControls : MonoBehaviour
 
     private void setNewBestScoreIfAchieved()
     {
-        if (score() > Convert.ToUInt64(bestScore))
+        if (Score() > Convert.ToUInt64(bestScore))
         {
-            PlayerPrefs.SetString("BestScore", score().ToString());
+            PlayerPrefs.SetString("BestScore", Score().ToString());
             PopupMenu.didAchieveNewBest = true;
         }
     }

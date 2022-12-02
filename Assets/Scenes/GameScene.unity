@@ -930,7 +930,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 687577141}
         m_TargetAssemblyTypeName: PopupMenu, Assembly-CSharp
-        m_MethodName: pause
+        m_MethodName: Pause
         m_Mode: 6
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1166,7 +1166,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 940268644}
         m_TargetAssemblyTypeName: PopupMenu, Assembly-CSharp
-        m_MethodName: replay
+        m_MethodName: Replay
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1995,7 +1995,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1488444726}
         m_TargetAssemblyTypeName: PopupMenu, Assembly-CSharp
-        m_MethodName: close
+        m_MethodName: Close
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -2746,7 +2746,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 2063971675}
         m_TargetAssemblyTypeName: PopupMenu, Assembly-CSharp
-        m_MethodName: home
+        m_MethodName: Home
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

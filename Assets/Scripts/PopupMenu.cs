@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using UnityEngine.SceneManagement;
@@ -32,7 +30,7 @@ public class PopupMenu : MonoBehaviour
         newBestText.SetActive(false);
     }
 
-    public static void display(bool playerDied = false)
+    public static void Display(bool playerDied = false)
     {
         pauseButton.SetActive(false);
         popupMenu.SetActive(true);
@@ -45,14 +43,14 @@ public class PopupMenu : MonoBehaviour
         didAchieveNewBest = false;
     }
 
-    public static void replay() 
+    public static void Replay() 
     {
         isPaused = false;
 
         SceneManager.LoadScene("GameScene", LoadSceneMode.Single);
     }
 
-    public static void home()
+    public static void Home()
     {
         isPaused = false;
 
@@ -60,7 +58,7 @@ public class PopupMenu : MonoBehaviour
     }
 
 
-    public static void close() 
+    public static void Close() 
     {
         isPaused = false;
 
@@ -71,13 +69,13 @@ public class PopupMenu : MonoBehaviour
         Time.timeScale = 1F;
     }
 
-    public static void pause(bool playerDied = false) 
+    public static void Pause(bool playerDied = false) 
     {
         isPaused = true;
 
         Time.timeScale = 0F;
 
-        display(playerDied);
+        Display(playerDied);
     }
 
 }
