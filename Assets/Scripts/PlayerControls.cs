@@ -12,6 +12,7 @@ public class PlayerControls : MonoBehaviour
     public AudioSource audioSource;
     public AudioClip audioClipJump;
     public AudioClip audioClipFall;
+    public Animator animator;
 
     public static bool playerIsDead = false;
 
@@ -74,6 +75,13 @@ public class PlayerControls : MonoBehaviour
     void OnCollisionEnter2D(Collision2D col)
     {
         ResetJumpCount();
+
+        animator.SetBool("ShouldRun", true);
+    }
+
+    private void OnCollisionExit2D(Collision2D col)
+    {
+        animator.SetBool("ShouldRun", false);
     }
 
     private void ResetJumpCount()
