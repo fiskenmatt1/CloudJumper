@@ -13,6 +13,7 @@ public class PlayerControls : MonoBehaviour
     public AudioClip audioClipJump;
     public AudioClip audioClipFall;
     public Animator animator;
+    public ParticleSystem jumpParticles;
 
     public static bool playerIsDead = false;
 
@@ -56,7 +57,11 @@ public class PlayerControls : MonoBehaviour
         if (Input.GetMouseButtonDown(0) && currentJumpCount < maxJumpCount && !mousePositionOnPauseButton()) 
         {
             audioSource.PlayOneShot(audioClipJump);
+
+            jumpParticles.Play();
+
             rb.velocity = new Vector2(rb.velocity.x, 6);
+
             currentJumpCount += 1;
         }
 
