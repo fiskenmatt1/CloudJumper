@@ -76,12 +76,15 @@ public class PlayerControls : MonoBehaviour
         }
     }
 
-    //TODO: restrict jump reset to collisions with top/sides of cloud 
     void OnCollisionEnter2D(Collision2D col)
     {
-        ResetJumpCount();
+        // restrict jump reset and run animation to collisions with upper side of cloud 
+        if (col.transform.position.y < transform.position.y)
+        {
+            ResetJumpCount();
 
-        animator.SetBool("ShouldRun", true);
+            animator.SetBool("ShouldRun", true);
+        }
     }
 
     private void OnCollisionExit2D(Collision2D col)
