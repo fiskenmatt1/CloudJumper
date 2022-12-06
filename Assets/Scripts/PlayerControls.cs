@@ -2,7 +2,14 @@ using System;
 using UnityEngine;
 using TMPro;
 using UnityEngine.EventSystems;
+using System.Collections;
 using System.Collections.Generic;
+
+public enum DeathType
+{
+    Fall,
+    Explode
+}
 
 public class PlayerControls : MonoBehaviour
 {
@@ -14,6 +21,7 @@ public class PlayerControls : MonoBehaviour
     public AudioClip audioClipFall;
     public Animator animator;
     public ParticleSystem jumpParticles;
+    public ParticleSystem deathParticles;
 
     public static bool playerIsDead = false;
 
@@ -45,13 +53,13 @@ public class PlayerControls : MonoBehaviour
         {
             if (!playerIsDead) 
             {
-                KillPlayer();
+                KillPlayer(DeathType.Fall);
             }
         }
 
         rb.velocity = new Vector2(baseSpeed + speedIncrease, rb.velocity.y);
 
-        if (Input.GetMouseButtonDown(0) && currentJumpCount < maxJumpCount && !mousePositionOnPauseButton()) 
+        if (Input.GetMouseButtonDown(0) && currentJumpCount < maxJumpCount && !MousePositionOnPauseButton()) 
         {
             audioSource.PlayOneShot(audioClipJump);
 
@@ -73,14 +81,32 @@ public class PlayerControls : MonoBehaviour
         }
     }
 
-    public void KillPlayer()
+    public void KillPlayer(DeathType deathType)
     {
-        //TODO: make audio clip dynamic (different clip depending on kill method)
-        audioSource.PlayOneShot(audioClipFall);
         playerIsDead = true;
-        setNewBestScoreIfAchieved();
-        //TODO: add delay before popup to show death animations etc.
-        PopupMenu.Pause(playerIsDead);
+
+        SetNewBestScoreIfAchieved();
+
+        switch (deathType)
+        {
+            case DeathType.Fall:
+                {
+                    audioSource.PlayOneShot(audioClipFall);
+
+                    StartCoroutine(DisplayPauseMenu(1.5F));
+
+                    break;
+                }
+            case DeathType.Explode:
+                {
+                    StartCoroutine(ExplodeDeath());
+
+                    StartCoroutine(DisplayPauseMenu(1.5F));
+
+                    break;
+                }     
+        }
+        
     }
 
     private void OnCollisionEnter2D(Collision2D col)
@@ -115,7 +141,7 @@ public class PlayerControls : MonoBehaviour
         return distanceMoved;
     }
 
-    private void setNewBestScoreIfAchieved()
+    private void SetNewBestScoreIfAchieved()
     {
         if (Score() > Convert.ToUInt64(bestScore))
         {
@@ -125,7 +151,7 @@ public class PlayerControls : MonoBehaviour
     }
 
     // Determine if mouse is over the pause button
-    private bool mousePositionOnPauseButton()
+    private bool MousePositionOnPauseButton()
     {
         PointerEventData pointer = new PointerEventData(EventSystem.current);
         pointer.position = Input.mousePosition;
@@ -149,5 +175,22 @@ public class PlayerControls : MonoBehaviour
         return onPauseButton;
     }
 
+    IEnumerator ExplodeDeath()
+    {
+        yield return new WaitForSeconds(0.2F);
+
+        //TODO: audio
+
+        gameObject.GetComponent<SpriteRenderer>().color = new Color(1f, 1f, 1f, 0f);
+
+        deathParticles.Play();
+    }
+
+    IEnumerator DisplayPauseMenu(float withDelay = 0F)
+    {
+        yield return new WaitForSeconds(withDelay);
+
+        PopupMenu.Pause(playerIsDead);
+    }
 }
 

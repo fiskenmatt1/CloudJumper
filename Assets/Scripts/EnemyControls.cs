@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class EnemyControls : MonoBehaviour
@@ -19,7 +17,7 @@ public class EnemyControls : MonoBehaviour
         {
             animator.SetBool("ShouldAttack", true);
 
-            playerCharacterScript.KillPlayer();
+            playerCharacterScript.KillPlayer(DeathType.Explode);
         }
     }
 }
