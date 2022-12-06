@@ -45,11 +45,8 @@ public class PlayerControls : MonoBehaviour
         {
             if (!playerIsDead) 
             {
-                audioSource.PlayOneShot(audioClipFall);
-                playerIsDead = true;
+                KillPlayer();
             }
-            setNewBestScoreIfAchieved();
-            PopupMenu.Pause(playerIsDead);
         }
 
         rb.velocity = new Vector2(baseSpeed + speedIncrease, rb.velocity.y);
@@ -76,7 +73,17 @@ public class PlayerControls : MonoBehaviour
         }
     }
 
-    void OnCollisionEnter2D(Collision2D col)
+    public void KillPlayer()
+    {
+        //TODO: make audio clip dynamic (different clip depending on kill method)
+        audioSource.PlayOneShot(audioClipFall);
+        playerIsDead = true;
+        setNewBestScoreIfAchieved();
+        //TODO: add delay before popup to show death animations etc.
+        PopupMenu.Pause(playerIsDead);
+    }
+
+    private void OnCollisionEnter2D(Collision2D col)
     {
         // restrict jump reset and run animation to collisions with upper side of cloud 
         if (col.transform.position.y < transform.position.y)

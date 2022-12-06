@@ -7007,6 +7007,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   animator: {fileID: 1419417930}
+  playerCharacter: {fileID: 1238932186}
+  playerCharacterScript: {fileID: 0}
 --- !u!1 &1460111687
 GameObject:
   m_ObjectHideFlags: 0
