@@ -12,6 +12,8 @@ TagManager:
   - ClickAudioSource
   - SettingsMenu
   - AudioToggle
+  - EnemyC
+  - MainC
   layers:
   - Default
   - TransparentFX
