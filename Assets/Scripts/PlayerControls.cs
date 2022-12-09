@@ -83,6 +83,9 @@ public class PlayerControls : MonoBehaviour
 
     public void KillPlayer(DeathType deathType)
     {
+        // freezes camera on death
+        mainCamera.GetComponent<Rigidbody2D>().simulated = true;
+
         playerIsDead = true;
 
         SetNewBestScoreIfAchieved();
@@ -93,7 +96,9 @@ public class PlayerControls : MonoBehaviour
                 {
                     audioSource.PlayOneShot(audioClipFall);
 
-                    StartCoroutine(DisplayPauseMenu(1.5F));
+                    rb.velocity = new Vector2(0, -20);
+
+                    StartCoroutine(DisplayPauseMenu(0.75F));
 
                     break;
                 }
@@ -101,7 +106,7 @@ public class PlayerControls : MonoBehaviour
                 {
                     StartCoroutine(ExplodeDeath());
 
-                    StartCoroutine(DisplayPauseMenu(1.5F));
+                    StartCoroutine(DisplayPauseMenu(1.25F));
 
                     break;
                 }     
