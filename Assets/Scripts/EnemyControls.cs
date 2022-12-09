@@ -11,12 +11,18 @@ public class EnemyControls : MonoBehaviour
         playerCharacterScript = playerCharacter.GetComponent<PlayerControls>();
     }
 
-        void OnCollisionEnter2D(Collision2D col)
-    { 
-        if (col.gameObject.tag == "MainC")
+    void Update()
+    {
+        if (Vector2.Distance(gameObject.transform.position, playerCharacter.transform.position) < 2)
         {
             animator.SetBool("ShouldAttack", true);
+        }
+    }
 
+    void OnTriggerEnter2D(Collider2D col)
+    {
+        if (col.gameObject.tag == "MainC")
+        {
             playerCharacterScript.KillPlayer(DeathType.Explode);
         }
     }

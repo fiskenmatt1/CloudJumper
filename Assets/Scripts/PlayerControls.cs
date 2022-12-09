@@ -104,7 +104,7 @@ public class PlayerControls : MonoBehaviour
                 }
             case DeathType.Explode:
                 {
-                    StartCoroutine(ExplodeDeath());
+                    ExplodeDeath();
 
                     StartCoroutine(DisplayPauseMenu(1.25F));
 
@@ -180,13 +180,13 @@ public class PlayerControls : MonoBehaviour
         return onPauseButton;
     }
 
-    IEnumerator ExplodeDeath()
+    private void ExplodeDeath()
     {
-        yield return new WaitForSeconds(0.2F);
-
         //TODO: audio
 
         gameObject.GetComponent<SpriteRenderer>().color = new Color(1f, 1f, 1f, 0f);
+
+        rb.velocity = new Vector2(0, 0);
 
         deathParticles.Play();
     }
