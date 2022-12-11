@@ -19,6 +19,7 @@ public class PlayerControls : MonoBehaviour
     public AudioSource audioSource;
     public AudioClip audioClipJump;
     public AudioClip audioClipFall;
+    public AudioClip audioClipExplode;
     public Animator animator;
     public ParticleSystem jumpParticles;
     public ParticleSystem deathParticles;
@@ -94,9 +95,7 @@ public class PlayerControls : MonoBehaviour
         {
             case DeathType.Fall:
                 {
-                    audioSource.PlayOneShot(audioClipFall);
-
-                    rb.velocity = new Vector2(0, -20);
+                    FallDeath();
 
                     StartCoroutine(DisplayPauseMenu(0.75F));
 
@@ -182,13 +181,20 @@ public class PlayerControls : MonoBehaviour
 
     private void ExplodeDeath()
     {
-        //TODO: audio
+        audioSource.PlayOneShot(audioClipExplode);
 
         gameObject.GetComponent<SpriteRenderer>().color = new Color(1f, 1f, 1f, 0f);
 
         rb.velocity = new Vector2(0, 0);
 
         deathParticles.Play();
+    }
+
+    private void FallDeath()
+    {
+        audioSource.PlayOneShot(audioClipFall);
+
+        rb.velocity = new Vector2(0, -20);
     }
 
     IEnumerator DisplayPauseMenu(float withDelay = 0F)
