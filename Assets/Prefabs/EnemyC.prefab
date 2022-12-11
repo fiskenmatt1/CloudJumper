@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 415606298780881045}
   - component: {fileID: 415606298780881042}
   - component: {fileID: 415606298780881043}
+  - component: {fileID: 5140410864620099093}
   m_Layer: 0
   m_Name: EnemyC
   m_TagString: EnemyC
@@ -121,7 +122,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   animator: {fileID: 415606298780881044}
-  playerCharacter: {fileID: 0}
   audioSource: {fileID: 415606298780881043}
   audioClipSlash: {fileID: 8300000, guid: 4f427d575965f46029e61a2feff3ebd5, type: 3}
 --- !u!61 &415606298780881042
@@ -246,3 +246,16 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &5140410864620099093
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 415606298780881051}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 26bf7dd9927a940b288114583b6f31e3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  platDestroyerPoint: {fileID: 0}
