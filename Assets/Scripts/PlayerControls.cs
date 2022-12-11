@@ -13,7 +13,6 @@ public enum DeathType
 
 public class PlayerControls : MonoBehaviour
 {
-    public Rigidbody2D rb;
     public TMP_Text scoreText;
     public Camera mainCamera;
     public AudioSource audioSource;
@@ -26,6 +25,7 @@ public class PlayerControls : MonoBehaviour
 
     public static bool playerIsDead = false;
 
+    private Rigidbody2D rb;
     private byte currentJumpCount = 0;
     private byte maxJumpCount = 2;
     private float baseSpeed = 3;

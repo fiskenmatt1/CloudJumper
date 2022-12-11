@@ -3,15 +3,16 @@ using UnityEngine;
 public class EnemyControls : MonoBehaviour
 {
     public Animator animator;
-    public GameObject playerCharacter;
     public AudioSource audioSource;
     public AudioClip audioClipSlash;
 
+    private GameObject playerCharacter;
     private PlayerControls playerCharacterScript;
     private bool didAttack = false;
 
     void Start()
     {
+        playerCharacter = GameObject.FindGameObjectWithTag("MainC");
         playerCharacterScript = playerCharacter.GetComponent<PlayerControls>();
     }
 
