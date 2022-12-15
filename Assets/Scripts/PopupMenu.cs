@@ -37,6 +37,7 @@ public class PopupMenu : MonoBehaviour
         closeButton.SetActive(!playerDied);
         newBestText.SetActive(didAchieveNewBest);
 
+        //TODO: add sfx on if playerDied == true
         popupMenuText.text = playerDied ? "GAME OVER" : "PAUSED";
 
         // Just in case reset bool to false after display

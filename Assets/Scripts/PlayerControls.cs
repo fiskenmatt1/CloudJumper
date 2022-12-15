@@ -66,12 +66,12 @@ public class PlayerControls : MonoBehaviour
 
             jumpParticles.Play();
 
-            rb.velocity = new Vector2(rb.velocity.x, 6);
+            rb.velocity = new Vector2(rb.velocity.x, 7.5F);
 
             currentJumpCount += 1;
         }
 
-        speedIncrease += 0.005F;
+        speedIncrease += 0.003F;
         UpdateScoreText(Score());
 
         // zoom out camera slowly over time (max 50) 

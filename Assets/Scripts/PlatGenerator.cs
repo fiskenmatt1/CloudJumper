@@ -5,17 +5,19 @@ public class PlatGenerator : MonoBehaviour
     public GameObject plat;
     public GameObject enemy;
     public Transform generatorPoint;
-    public float distanceBetweenPlats;
 
+    private float distanceBetweenPlats = 3.5F;
     private float platWidth;
     private float platHeight;
     private float enemyHeight;
     private float newPlatYVal;
+    private float newPlatYVal2;
     private float lowestPossiblePlatYVal;
     private float lastPlatYVal;
     private float maxJumpHeight = 3.5F; // NOTE: not true max jump height, just a difficult but reachable height
     private int numOfPlatsGeneratedWithoutEnemy = 0;
     private int numOfPlatsGeneratedWithoutEnemyUpperLimit = 12;
+    private bool plat2OffsetPositive = true;
 
     // Start is called before the first frame update
     void Start()
@@ -38,23 +40,54 @@ public class PlatGenerator : MonoBehaviour
     {
         if (transform.position.x < generatorPoint.position.x)
         {
-            newPlatYVal = Random.Range(lowestPossiblePlatYVal, (lastPlatYVal + maxJumpHeight));
             transform.position = new Vector2(transform.position.x + (platWidth / 2) + distanceBetweenPlats, transform.position.y);
+
+            newPlatYVal = Random.Range(lowestPossiblePlatYVal, (lastPlatYVal + maxJumpHeight));
             Vector2 newPlatVector = new Vector2(transform.position.x, newPlatYVal);
             GameObject generatedPlat = Instantiate(plat, newPlatVector, transform.rotation);
+
             lastPlatYVal = newPlatYVal;
-            // distanceBetweenPlats += 0.01F;
+
             numOfPlatsGeneratedWithoutEnemy++;
+
+            GameObject generatedPlat2 = null;
+
+            if (Random.Range(0, 3) == 1) 
+            {
+                float plat2Offset = plat2OffsetPositive ? Random.Range(2, 4) : Random.Range(-2, -4); 
+                newPlatYVal2 = newPlatYVal + Random.Range((enemyHeight * 3F), (enemyHeight * 4.5F));
+                Vector2 newPlatVector2 = new Vector2(transform.position.x + plat2Offset, newPlatYVal2); //WARNING: Range(-2.5F, 2.5F) could cause overlap as distance between plats can be less than 5 
+                generatedPlat2 = Instantiate(plat, newPlatVector2, transform.rotation);
+                numOfPlatsGeneratedWithoutEnemy++;
+            }
+            else
+            {
+                // plat2 not generated so can safely switch offset direction without worrying about platform overlap
+                plat2OffsetPositive = !plat2OffsetPositive;
+            }
 
             int randomizer = Random.Range(numOfPlatsGeneratedWithoutEnemy, numOfPlatsGeneratedWithoutEnemyUpperLimit + 1);
             if (randomizer == numOfPlatsGeneratedWithoutEnemyUpperLimit)
             {
-                Vector2 newEnemyVector = new Vector2(generatedPlat.transform.position.x, newPlatYVal + (platHeight / 2) + enemyHeight);
+                float platYValToUse = newPlatYVal;
+                float platXValToUse = generatedPlat.transform.position.x;
+
+                if (generatedPlat2 != null)
+                {
+                    if (Random.Range(0, 2) == 1)
+                    {
+                        platYValToUse = newPlatYVal2;
+                        platXValToUse = generatedPlat2.transform.position.x;
+                    }
+                }
+
+                Vector2 newEnemyVector = new Vector2(platXValToUse, platYValToUse + (platHeight / 2) + enemyHeight);
                 Instantiate(enemy, newEnemyVector, transform.rotation);
+
                 numOfPlatsGeneratedWithoutEnemy = 0;
             }
         }
         // increase distance of next plat spawn (x)
-        distanceBetweenPlats += 0.001F;
+        distanceBetweenPlats += 0.0005F;
     }
 }
