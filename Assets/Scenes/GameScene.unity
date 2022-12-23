@@ -1345,32 +1345,27 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 7569900676101446875, guid: 13fb23859c4e44cfa9127d5528eef367, type: 3}
   m_PrefabInstance: {fileID: 7569900676786896718}
   m_PrefabAsset: {fileID: 0}
---- !u!61 &1054705963
-BoxCollider2D:
+--- !u!50 &1054705968
+Rigidbody2D:
+  serializedVersion: 4
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1054705958}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 6200000, guid: 768ec916e09c74473b6185faa2ce76a4, type: 2}
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 10.8, y: 2.56}
-    newSize: {x: 10.8, y: 2.56}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 9.6, y: 1.3}
-  m_EdgeRadius: 0.3
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 50
+  m_LinearDrag: 0
+  m_AngularDrag: 0.001
+  m_GravityScale: 0.0001
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 4
 --- !u!1 &1085121193
 GameObject:
   m_ObjectHideFlags: 0
@@ -11408,32 +11403,27 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 7569900676101446875, guid: 13fb23859c4e44cfa9127d5528eef367, type: 3}
   m_PrefabInstance: {fileID: 1358620709}
   m_PrefabAsset: {fileID: 0}
---- !u!61 &1263199398
-BoxCollider2D:
+--- !u!50 &1263199403
+Rigidbody2D:
+  serializedVersion: 4
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1263199397}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 6200000, guid: 768ec916e09c74473b6185faa2ce76a4, type: 2}
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 10.8, y: 2.56}
-    newSize: {x: 10.8, y: 2.56}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 9.6, y: 1.3}
-  m_EdgeRadius: 0.3
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 50
+  m_LinearDrag: 0
+  m_AngularDrag: 0.001
+  m_GravityScale: 0.0001
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 4
 --- !u!1001 &1358620709
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -11903,32 +11893,27 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 7569900676101446875, guid: 13fb23859c4e44cfa9127d5528eef367, type: 3}
   m_PrefabInstance: {fileID: 551278094}
   m_PrefabAsset: {fileID: 0}
---- !u!61 &1660440737
-BoxCollider2D:
+--- !u!50 &1660440742
+Rigidbody2D:
+  serializedVersion: 4
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1660440736}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 6200000, guid: 768ec916e09c74473b6185faa2ce76a4, type: 2}
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 10.8, y: 2.56}
-    newSize: {x: 10.8, y: 2.56}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 9.6, y: 1.3}
-  m_EdgeRadius: 0.3
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 50
+  m_LinearDrag: 0
+  m_AngularDrag: 0.001
+  m_GravityScale: 0.0001
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 4
 --- !u!1 &1867744386
 GameObject:
   m_ObjectHideFlags: 0
@@ -12361,7 +12346,6 @@ MonoBehaviour:
   plat: {fileID: 7569900676101446875, guid: 13fb23859c4e44cfa9127d5528eef367, type: 3}
   enemy: {fileID: 415606298780881051, guid: dd506c51bb4c14d41a57428154ece083, type: 3}
   generatorPoint: {fileID: 1085121194}
-  distanceBetweenPlats: 2
 --- !u!4 &2031414317
 Transform:
   m_ObjectHideFlags: 0
