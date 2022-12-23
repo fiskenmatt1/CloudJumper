@@ -78,7 +78,7 @@ public class PlayerControls : MonoBehaviour
         // NOTE: increase should probably be linked to score or player speed rather than frames
         if (mainCamera.orthographicSize < 50F)
         {
-            mainCamera.orthographicSize += 0.001F;
+            mainCamera.orthographicSize += 0.0005F;
         }
     }
 
