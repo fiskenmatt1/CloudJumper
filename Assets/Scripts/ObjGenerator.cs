@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class PlatGenerator : MonoBehaviour
+public class ObjGenerator : MonoBehaviour
 {
     public GameObject plat;
     public GameObject enemy;
