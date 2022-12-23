@@ -67,7 +67,8 @@ public class ObjGenerator : MonoBehaviour
             }
 
             int randomizer = Random.Range(numOfPlatsGeneratedWithoutEnemy, numOfPlatsGeneratedWithoutEnemyUpperLimit + 1);
-            if (randomizer == numOfPlatsGeneratedWithoutEnemyUpperLimit)
+            if (numOfPlatsGeneratedWithoutEnemy >= numOfPlatsGeneratedWithoutEnemyUpperLimit ||
+                randomizer == numOfPlatsGeneratedWithoutEnemyUpperLimit)
             {
                 float platYValToUse = newPlatYVal;
                 float platXValToUse = generatedPlat.transform.position.x;
