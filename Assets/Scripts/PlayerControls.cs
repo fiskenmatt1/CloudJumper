@@ -19,11 +19,11 @@ public class PlayerControls : MonoBehaviour
     public AudioClip audioClipJump;
     public AudioClip audioClipFall;
     public AudioClip audioClipExplode;
-    public Animator animator;
+    public Animator playerAnimator;
+    public Animator camAnimator;
     public ParticleSystem jumpParticles;
     public ParticleSystem deathParticles;
-
-    public static bool playerIsDead = false;
+    public bool playerIsDead = false;
 
     private Rigidbody2D rb;
     private byte currentJumpCount = 0;
@@ -64,7 +64,7 @@ public class PlayerControls : MonoBehaviour
         {
             audioSource.PlayOneShot(audioClipJump);
 
-            jumpParticles.Play();
+            jumpParticles.Play();          
 
             rb.velocity = new Vector2(rb.velocity.x, 7.5F);
 
@@ -84,9 +84,6 @@ public class PlayerControls : MonoBehaviour
 
     public void KillPlayer(DeathType deathType)
     {
-        // freezes camera on death
-        mainCamera.GetComponent<Rigidbody2D>().simulated = true;
-
         playerIsDead = true;
 
         SetNewBestScoreIfAchieved();
@@ -120,13 +117,13 @@ public class PlayerControls : MonoBehaviour
         {
             ResetJumpCount();
 
-            animator.SetBool("ShouldRun", true);
+            playerAnimator.SetBool("ShouldRun", true);
         }
     }
 
     private void OnCollisionExit2D(Collision2D col)
     {
-        animator.SetBool("ShouldRun", false);
+        playerAnimator.SetBool("ShouldRun", false);
     }
 
     private void ResetJumpCount()
@@ -188,6 +185,8 @@ public class PlayerControls : MonoBehaviour
         rb.velocity = new Vector2(0, 0);
 
         deathParticles.Play();
+
+        camAnimator.SetTrigger("ShouldShakeCam");
     }
 
     private void FallDeath()
