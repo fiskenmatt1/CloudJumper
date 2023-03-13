@@ -60,7 +60,7 @@ public class PlayerControls : MonoBehaviour
 
         rb.velocity = new Vector2(baseSpeed + speedIncrease, rb.velocity.y);
 
-        if (Input.GetMouseButtonDown(0) && currentJumpCount < maxJumpCount && !MousePositionOnPauseButton()) 
+        if ((Input.GetMouseButtonDown(0) || Input.GetKeyDown(KeyCode.Space)) && currentJumpCount < maxJumpCount && !MousePositionOnPauseButton()) 
         {
             audioSource.PlayOneShot(audioClipJump);
 
